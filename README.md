@@ -233,8 +233,6 @@ lectura-lite/
 **Issue**: Document context not loading  
 **Solution**: Click the retry button (🔄) next to "Document Context"
 
-See [SETUP.md](SETUP.md) for detailed troubleshooting.
-
 ---
 
 ## 📄 License
