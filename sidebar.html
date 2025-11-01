@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lectura lite</title>
+    <link rel="stylesheet" href="sidebar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="sidebar-body">
+    <!-- Home Screen -->
+    <div id="homeScreen" class="screen">
+        <div class="sidebar-header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Lectura lite</h1>
+                    <p>Powered by Gemini Nano</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-content">
+
+            <!-- Main Action Buttons -->
+            <div class="action-grid">
+                <button class="action-card" id="summarizeCard">
+                    <div class="card-icon summarize">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Summarize</h3>
+                        <p>Get key points from the document</p>
+                    </div>
+                </button>
+
+                <button class="action-card" id="proofreadCard">
+                    <div class="card-icon proofread">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Proofread</h3>
+                        <p>Check grammar and spelling</p>
+                    </div>
+                </button>
+
+                <button class="action-card" id="translateCard">
+                    <div class="card-icon translate">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Translate</h3>
+                        <p>Convert to another language</p>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Chat Button -->
+            <div class="chat-button-container">
+                <button class="chat-button" id="chatButton">
+                    <div class="sparkle-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/>
+                        </svg>
+                    </div>
+                    <span>Chat with AI</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- AI Availability Status -->
+            <div class="ai-status" id="aiStatus">
+                <div class="status-indicator"></div>
+                <span>Checking AI availability...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chatScreen" class="screen hidden">
+        <div class="chat-header">
+            <button class="back-button" id="backButton">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="chat-header-content">
+                <div>
+                    <h2>Chat with AI</h2>
+                    <p class="chat-subtitle">Ask anything about your document</p>
+                </div>
+            </div>
+            <button class="clear-chat-button" id="clearChatButton">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <div class="gemini-icon-large">
+                    <svg viewBox="0 0 24 24" width="32" height="32">
+                        <path fill="currentColor" d="M12 2L2 7L12 12L22 7L12 2M2 17L12 22L22 17V11L12 16L2 11V17Z"/>
+                    </svg>
+                </div>
+                <h3>Welcome to Lectura lite</h3>
+                <p>I have access to your document. Ask me anything!</p>
+            </div>
+        </div>
+
+        <div class="chat-input-container">
+            <div class="quick-prompts" id="quickPrompts">
+                <button class="quick-prompt" data-prompt="Summarize the main points">
+                    <i class="fas fa-list"></i> Summarize
+                </button>
+                <button class="quick-prompt" data-prompt="Explain this in simple terms">
+                    <i class="fas fa-lightbulb"></i> Explain
+                </button>
+                <button class="quick-prompt" data-prompt="What are the key takeaways?">
+                    <i class="fas fa-key"></i> Key Points
+                </button>
+            </div>
+            <div class="input-wrapper">
+                <textarea 
+                    id="chatInput" 
+                    placeholder="Ask me anything about the document..."
+                    rows="1"
+                ></textarea>
+                <button class="send-button" id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Result Screen -->
+    <div id="resultScreen" class="screen hidden">
+        <div class="result-header">
+            <button class="back-button" id="resultBackButton">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="result-header-content">
+                <h2 id="resultTitle">Result</h2>
+            </div>
+            <div id="languageSelector" class="language-selector hidden">
+                <select id="sourceLanguage">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="ja">Japanese</option>
+                </select>
+                <i class="fas fa-arrow-right"></i>
+                <select id="targetLanguage">
+                    <option value="fr">French</option>
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="ja">Japanese</option>
+                </select>
+                <button id="runTranslateButton"><i class="fas fa-check"></i></button>
+            </div>
+            <div class="result-actions">
+                <button class="icon-button" id="copyButton" title="Copy">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <button class="icon-button" id="exportButton" title="Export">
+                    <i class="fas fa-download"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="result-content" id="resultContent">
+            <div class="loading-animation">
+                <div class="loading-spinner"></div>
+                <p>Processing with AI...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="sidebar.js"></script>
+</body>
+</html>
+
+<!-- Proofread Screen -->
+<div id="proofreadScreen" class="screen hidden">
+    <div class="result-header">
+        <button class="back-button" id="proofreadBackButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="result-header-content">
+            <h2>Proofread Text</h2>
+        </div>
+    </div>
+
+    <div class="sidebar-content">
+        <div class="proofread-input-container">
+            <textarea id="proofreadInput" placeholder="Paste or type text here to proofread..."></textarea>
+            <button id="runProofreadButton" class="action-button">Proofread Text</button>
+        </div>
+        <div id="proofreadDownloadStatus" class="download-status hidden"></div>
+        <div class="proofread-result-container">
+            <h3>Changes:</h3>
+            <div id="proofreadHighlighted" class="result-text"></div>
+            <h3 style="margin-top: 16px;">Corrected Text:</h3>
+            <div id="proofreadFinal" class="result-text"></div>
+        </div>
+    </div>
+</div>
+
