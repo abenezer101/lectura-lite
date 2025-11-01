@@ -82,7 +82,6 @@ Wait for the ~1-2GB model to download.
 4. Click **Load unpacked** → select extension folder
 5. Click the extension icon to open the sidebar!
 
-📖 **See [SETUP.md](SETUP.md) for detailed instructions**
 
 ---
 
@@ -102,12 +101,6 @@ Wait for the ~1-2GB model to download.
 2. **Right-click** → Lectura App Offline
 3. Choose: Summarize, Proofread, Translate, or Chat
 4. **Sidebar opens** with action already started
-
-### Method 3: Keyboard Shortcuts
-- `Ctrl+Shift+S` → Summarize  
-- `Ctrl+Shift+P` → Proofread  
-- `Ctrl+Shift+T` → Translate  
-- `Ctrl+Shift+R` → Rewrite  
 
 ---
 
@@ -152,10 +145,6 @@ lectura-lite/
 ├── contentScript.js       # Page interaction
 ├── exportUtils.js         # Export functionality
 ├── icons/                 # Extension icons
-├── SETUP.md              # Detailed setup guide
-├── QUICKSTART.md         # Quick start guide
-├── CHANGES.md            # Change log
-├── PDF-GUIDE.md          # PDF usage guide
 └── README.md
 ```
 
@@ -209,6 +198,7 @@ lectura-lite/
 - 📄 Enhanced export options (PDF, Word)
 - 🔊 Text-to-speech for responses
 - 📱 Better mobile/tablet support
+- 🖥️ Integration with [lectura AI](https://lecturaai.com) 
 
 ---
 
@@ -222,16 +212,6 @@ lectura-lite/
 
 **Issue**: Model download fails  
 **Solution**: Check disk space (2GB needed), restart Chrome, retry download
-
-**Issue**: PDF text extraction limited  
-**Solution**: 
-- Use Chrome's built-in PDF viewer (not external viewers)
-- Click the retry button (🔄) to reload document context
-- For scanned PDFs, select text manually and use right-click context menu
-- Some encrypted PDFs may block extraction
-
-**Issue**: Document context not loading  
-**Solution**: Click the retry button (🔄) next to "Document Context"
 
 ---
 
